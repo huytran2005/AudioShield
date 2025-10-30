@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+:root{
+   --color-background: #E0EAFA;
+   --color-header: #120368;
+    --color-text: #6B7280;
+    --color-text-dark: #14191e;
+    --color-primary: #23A0E3;
+    --color-title: #1E1B4B;
+
+    --font:"Roboto", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Đảm bảo page-wrapper chiếm hết không gian còn lại */
+.page-wrapper {
+  flex: 1;
+}
+
+/* Transitions và hover effects chung cho tất cả các trang */
+a, button, input, .pwd-toggle {
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+

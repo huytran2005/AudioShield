@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/dangKy.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="inner-wrap">
+            <div class="inner-name">
+                <a href="/">
+                    <span>ScamDetector VN</span>
+                </a>
+            </div>
+
+            <div class="inner-menu">
+                <ul class="menu-list">
+                    <li class="dangky"><a href="dangKy.html">Đăng ký</a></li>
+                    <li class="dangnhap"><a href="dangNhap.html">Đăng nhập</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- End header Section -->
+
+    <!-- Section content -->
+    <div class="page-wrapper">
+        <div class="inner-content">
+            <div class="left-introduce">
+                <img src="../assets/images/logo.jpg" alt="Logo ScamDetector VN">
+                <div class="inner-title">
+                    <h1>ScamDetector VN</h1>
+                    <p>Bảo vệ bạn khỏi lừa đảo qua phân tích lời nói</p>
+                </div>
+            </div>
+
+            <div class="register-card">
+                <div class="card-inner">
+                    <h2>Đăng Ký</h2>
+                    <p class="small-link">Đã có tài khoản? <a href="dangNhap.html">Đăng nhập</a></p>
+
+                    <form id="registerForm" novalidate>
+                        <label for="fullname">Họ và tên</label>
+                        <input id="fullname" name="fullname" placeholder="Nhập tên của bạn" required>
+
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="Nhập email của bạn" required>
+
+                        <label for="password">Mật khẩu</label>
+                        <div class="password-wrap">
+                            <input id="password" name="password" type="password" placeholder="Nhập mật khẩu"
+                                aria-describedby="pwd-hint" required>
+                            <button type="button" class="pwd-toggle" data-target="password" aria-label="Hiện mật khẩu"
+                                title="Hiện mật khẩu">
+                                <i class="fa-regular fa-eye"></i>
+                                <i class="fa-regular fa-eye-slash" style="display: none;"></i>
+                            </button>
+                        </div>
+
+                        <label for="confirm">Xác nhận mật khẩu</label>
+                        <div class="password-wrap">
+                            <input id="confirm" name="confirm" type="password" placeholder="Nhập lại mật khẩu" required>
+                            <button type="button" class="pwd-toggle" data-target="confirm" aria-label="Hiện mật khẩu"
+                                title="Hiện mật khẩu">
+                                <i class="fa-regular fa-eye"></i>
+                                <i class="fa-regular fa-eye-slash" style="display: none;"></i>
+                            </button>
+                        </div>
+
+                        <p id="confirm-msg" class="confirm-msg" aria-live="polite"></p>
+
+                        <button id="btnRegister" class="primary-btn" type="submit" disabled>Đăng ký</button>
+                        <p class="terms">Bằng cách đăng ký, bạn đồng ý với <a href="#">Điều khoản dịch vụ</a> của chúng
+                            tôi</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer-bar">
+        <div class="wrap">
+            <small>© 2025 ScamDetector VN. Bảo vệ thông tin cá nhân của bạn.</small>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/dangKy.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - ScamDetector VN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/dangNhap.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="inner-wrap">
+            <div class="inner-name">
+                <a href="/">
+                    <span>ScamDetector VN</span>
+                </a>
+            </div>
+
+            <div class="inner-menu">
+                <ul class="menu-list">
+                    <li class="dangky"><a href="dangKy.html">Đăng ký</a></li>
+                    <li class="dangnhap"><a href="dangNhap.html">Đăng nhập</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- End header Section -->
+
+    <!-- Section content -->
+    <div class="page-wrapper">
+        <div class="inner-content">
+            <div class="left-introduce">
+                <img src="../assets/images/logo.jpg" alt="Logo ScamDetector VN">
+                <div class="inner-title">
+                    <h1>ScamDetector VN</h1>
+                    <p>Bảo vệ bạn khỏi lừa đảo qua giọng nói</p>
+                </div>
+            </div>
+
+            <div class="login-card">
+                <div class="card-inner">
+                    <h2>Đăng nhập</h2>
+                    <p class="small-link">Không có tài khoản? <a href="dangKy.html">Đăng ký</a></p>
+
+                    <form id="loginForm" novalidate>
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="Nhập email" required>
+
+                        <label for="password">Mật khẩu</label>
+                        <div class="password-wrap">
+                            <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" required>
+                            <button type="button" class="pwd-toggle" data-target="password" aria-label="Hiện mật khẩu"
+                                title="Hiện mật khẩu">
+                                <i class="fa-regular fa-eye"></i>
+                                <i class="fa-regular fa-eye-slash" style="display: none;"></i>
+                            </button>
+                        </div>
+
+                        <div class="remember-forgot">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="remember" name="remember">
+                                <span>Ghi nhớ đăng nhập</span>
+                            </label>
+                            <a href="#" class="forgot-link">Quên mật khẩu?</a>
+                        </div>
+
+                        <button id="btnLogin" class="primary-btn" type="submit">Đăng nhập</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer-bar">
+        <div class="wrap">
+            <small>© 2025 ScamDetector VN. Bảo vệ thông tin cá nhân của bạn.</small>
+        </div>
+    </footer>
+
+    <!-- Modal Quên Mật Khẩu -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-back" aria-label="Quay lại">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="modal-close" aria-label="Đóng">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-body">
+                <h2>Quên mật khẩu?</h2>
+                <p class="modal-description">Hãy nhập vào form dưới đây. Chúng tôi sẽ gửi cho bạn mật khẩu</p>
+
+                <form id="forgotPasswordForm" novalidate>
+                    <label for="forgot-username">Nhập tên tài khoản của bạn</label>
+                    <input id="forgot-username" name="username" type="text" placeholder="Nhập tên tài khoản của bạn" required>
+
+                    <label for="forgot-email">Nhập email của bạn</label>
+                    <input id="forgot-email" name="email" type="email" placeholder="Nhập email của bạn" required>
+
+                    <button type="submit" class="modal-btn">Gửi thông tin</button>
+
+                    <p class="modal-footer-text">Nếu bạn không nhớ được tài khoản của mình? <a href="dangKy.html">Đăng ký</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/dangNhap.js"></script>
+</body>
+
+</html>
