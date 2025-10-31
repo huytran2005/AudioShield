@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - ScamDetector VN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/trangChu.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="inner-wrap">
+            <div class="inner-name">
+                <a href="trangChu.html">
+                    <span>ScamDetector VN</span>
+                </a>
+            </div>
+
+            <div class="inner-menu">
+                <div class="user-menu-wrapper">
+                    <div class="user-icon" title="Tài khoản">
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <button class="logout-option" id="logoutOption">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span>Đăng xuất</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End header Section -->
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal-overlay" id="logoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Xác nhận đăng xuất</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn đăng xuất khỏi hệ thống?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" id="cancelLogout">Hủy</button>
+                <button class="btn-confirm" id="confirmLogout">Đăng xuất</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="page-wrapper">
+        <div class="home-content">
+            <!-- Microphone Section -->
+            <div class="mic-section">
+                <div class="mic-status">
+                    <h3>Trạng thái Mic</h3>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="status-indicator"></span>
+                        <p class="status-text">Đã sẵn sàng</p>
+                    </div>
+                </div>
+
+                <div class="mic-button-area">
+                    <button class="mic-button" id="micButton" aria-label="Bắt đầu ghi âm">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+
+                    <div class="mic-instruction">
+                        <h4>Nhấn nút để bắt đầu ghi âm cuộc gọi</h4>
+                        <p>Hệ thống sẽ phân tích giọng nói để dự đoán điều bạn lo lắng</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Section -->
+            <div class="analysis-section">
+                <h3>Phân tích</h3>
+
+                <div class="analysis-result">
+                    <div class="welcome-message" id="welcomeMessage">
+                        <h4>Chào mừng bạn</h4>
+                        <p>Hãy nhấn nút <i class="fa-solid fa-microphone" style="color: #3B82F6;"></i> ở bên trái để bắt
+                            đầu ghi âm
+                            giọng nói tiếng Việt. Bản ghi sẽ tự động được phân tích và phân loại Scam sau khi dừng.</p>
+                    </div>
+                    <div class="transcription-box" id="transcriptionBox">
+                        <div class="transcription-header">
+                            <h4>Văn bản đã dịch:</h4>
+                            <div class="recording-indicator">
+                                <span class="rec-dot"></span>
+                                <span>Đang ghi âm...</span>
+                            </div>
+                        </div>
+                        <div class="transcription-content" id="transcriptionContent">
+                            <p class="transcription-text"></p>
+                        </div>
+                    </div>
+
+                    <!-- Processing State -->
+                    <div class="processing-state" id="processingState">
+                        <div class="processing-icon">
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+                        </div>
+                        <h4>Đang gửi dữ liệu và xử lý</h4>
+                        <p>Vui lòng đợi trong giây lát...</p>
+                    </div>
+
+                    <!-- Server Error State -->
+                    <div class="error-state" id="errorState">
+                        <div class="error-icon">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <h4>Lỗi xử lý Server</h4>
+                        <p>Failed to fetch</p>
+                        <button class="retry-btn" id="retryBtn">Thử lại</button>
+                    </div>
+
+                    <!-- Result: Normal -->
+                    <div class="result-normal" id="resultNormal">
+                        <span class="result-badge safe">Bình thường</span>
+                        <h4>Phân loại: Bình thường</h4>
+                        <div class="transcript-box">
+                            <p class="transcript-label">Văn bản đã dịch:</p>
+                            <p class="transcript-text" id="normalTranscript"></p>
+                        </div>
+                    </div>
+
+                    <!-- Result: Scam Warning -->
+                    <div class="result-scam" id="resultScam">
+                        <span class="result-badge danger">Cảnh báo Scam</span>
+                        <h4>Phân loại: Cảnh Báo Scam</h4>
+                        <div class="transcript-box">
+                            <p class="transcript-label">Văn bản đã dịch:</p>
+                            <p class="transcript-text" id="scamTranscript"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Section -->
+            <div class="history-section">
+                <div class="history-header">
+                    <h3>Lịch sử ghi âm</h3>
+                    <button class="view-all-btn">Xem tất cả lịch sử</button>
+                </div>
+
+                <div class="history-list">
+                    <!-- History Item 1 -->
+                    <div class="history-item" data-id="1">
+                        <div class="history-item-left">
+                            <h4 class="history-title">Cuộc gọi từ bạn bè</h4>
+                            <p class="history-meta">24/10/2025, 14:30 • Thời lượng 2:45</p>
+                        </div>
+                        <div class="history-item-right">
+                            <span class="history-status safe">An toàn</span>
+                            <a href="#" class="history-action" data-id="1">Xem chi tiết</a>
+                        </div>
+                    </div>
+
+                    <!-- History Item 2 -->
+                    <div class="history-item" data-id="2">
+                        <div class="history-item-left">
+                            <h4 class="history-title">Cuộc gọi từ số lạ</h4>
+                            <p class="history-meta">24/10/2025, 11:15 • Thời lượng 1:20</p>
+                        </div>
+                        <div class="history-item-right">
+                            <span class="history-status warning">Cảnh báo</span>
+                            <a href="#" class="history-action" data-id="2">Xem chi tiết</a>
+                        </div>
+                    </div>
+
+                    <!-- History Item 3 -->
+                    <div class="history-item" data-id="3">
+                        <div class="history-item-left">
+                            <h4 class="history-title">Lừa đảo - Giả mạo ngân hàng</h4>
+                            <p class="history-meta">23/10/2025, 09:45 • Thời lượng 3:10</p>
+                        </div>
+                        <div class="history-item-right">
+                            <span class="history-status danger">Lừa đảo</span>
+                            <a href="#" class="history-action" data-id="3">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer-bar">
+        <div class="wrap">
+            <small>© 2025 ScamDetector VN. Bảo vệ thông tin cá nhân của bạn.</small>
+        </div>
+    </footer>
+
+    <!-- History Detail Modal -->
+    <div class="modal-overlay" id="historyDetailModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Chi tiết bản ghi âm</h3>
+                <button class="modal-close" id="closeDetailModal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="historyDetailContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/trangChu.js"></script>
+</body>
+
+</html>
